@@ -1,0 +1,7 @@
+pyautogui
+pynput
+pydirectinput; platform_system == "Windows"
+numpy
+scipy
+matplotlib
+pyaudio

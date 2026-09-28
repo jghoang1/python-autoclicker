@@ -1,19 +1,15 @@
 import logging
 import re
+import sys
 import time
 import tkinter as tk
-import tkinter.ttk as ttk
+from tkinter import ttk
 
 import pyautogui
-from audio_trigger import DEFAULT_AUDIO_RMSE_THRESHOLD, AudioTrigger
+from audio_trigger import AudioTrigger, DEFAULT_AUDIO_RMSE_THRESHOLD
 from common import *
 from pynput.keyboard import Key, Listener
-import logging
 from timer_tools import Timer
-from common import *
-from audio_trigger import AudioTrigger, DEFAULT_AUDIO_RMSE_THRESHOLD
-import re
-import sys
 
 os_platform = sys.platform
 print(f"OS Platform (sys.platform): {os_platform}")

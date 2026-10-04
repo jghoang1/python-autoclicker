@@ -5,6 +5,8 @@ import tkinter as tk
 from tkinter import ttk
 
 import pyautogui
+from pynput.keyboard import Key, Listener
+
 from common import (
     COLOR_OFF,
     COLOR_ON,
@@ -14,9 +16,8 @@ from common import (
     MINHEIGHT,
     MINWIDTH,
 )
-from pynput.keyboard import Key, Listener
+from rows import AudioTriggerRow, SequenceRow, TimerRow
 from timer_tools import Timer
-from rows import AutoclickerRow, AudioTriggerRow, SequenceRow, TimerRow
 
 os_platform = sys.platform
 print(f"OS Platform (sys.platform): {os_platform}")
@@ -24,6 +25,7 @@ print(f"OS Platform (sys.platform): {os_platform}")
 if os_platform == "win32":
     print("Running on Windows.")
     import pydirectinput
+
     input_shim = pydirectinput
 elif os_platform == "linux":
     print("Running on Linux.")
@@ -38,7 +40,7 @@ input_shim.PAUSE = 0.005
 
 
 class AutoClicker:
-    STANDARD_BUTTONS = [
+    STANDARD_BUTTONS = (
         "\t",
         "\n",
         "\r",
@@ -192,7 +194,7 @@ class AutoClicker:
         "option",
         "optionleft",
         "optionright",
-    ]
+    )
 
     def __init__(self):
         self.logger = logging.getLogger(
@@ -267,7 +269,6 @@ class AutoClicker:
         for click in self.clicks_to_release:
             self.logger.info(f"Releasing {click} mouse button")
             pydirectinput.mouseUp(button=click)
-
 
     def _key_press(self, key):
         self.logger.debug(f"{key} was pressed")
